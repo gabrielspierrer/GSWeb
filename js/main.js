@@ -99,3 +99,17 @@ function automatico() {
   
   timer = setTimeout(automatico, 5000);
 };
+
+// Limpiar el formulario
+const form = document.getElementById('form');
+const enviar = document.getElementById('btn-enviar');
+
+enviar.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (form.checkValidity()) {
+    form.submit();
+    form.reset();
+  } else {
+    form.reportValidity();
+  }
+});
