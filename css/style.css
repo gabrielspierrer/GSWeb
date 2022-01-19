@@ -1,0 +1,692 @@
+/* Mobile First Design */
+
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geo&family=Istok+Web&family=Orbitron&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geo&family=Istok+Web&family=Orbitron&family=Permanent+Marker&family=Russo+One&display=swap');
+
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Declaracion de variables globales, scroll fluido y tamaño de fuente */
+/* <html> */
+:root {
+    --fondo: #778899;
+    --hover: #b0c4de;
+    --form: #5f9ea0;
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: var(--fondo);
+    color: black;
+    font-family: 'Geo', sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+    letter-spacing: .02em;
+}
+
+h1 a:hover {
+    color: var(--hover);
+    text-shadow: .1em .1em .1em black;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    text-shadow: .1em .1em .1em var(--hover);
+    letter-spacing: .1em;
+}
+
+h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 1.5em;
+    margin-bottom: .5em;
+    text-shadow: .1em .1em .1em var(--hover);
+    letter-spacing: .1em;
+}
+
+h4 {
+    text-align: center;
+    font-size: 1.2em;
+    text-decoration: underline;
+    letter-spacing: .05em;
+    margin-bottom: .5em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Clases */
+
+/* Clase contenedor */
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+/* Boton inicio */
+.flecha {
+    display: none;
+    position: fixed;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    bottom: .5em;
+    right: .5em;
+    background: var(--form);
+    z-index: 999;
+}
+  
+.flecha:hover {
+    background: var(--hover);
+}
+
+/* Clase cabecera */
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 1em 0 black;
+    background: var(--fondo);
+    padding: .5em;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Clases del nav */
+
+/* Oculto el nav mientras estoy en la vista movil */
+nav {
+    display: none;
+}
+
+/* Añado esta clase con js al hacer click en el boton
+para mostrar el nav */
+.nav-movil {
+    display: block;
+}
+
+/* estilos del nav */
+nav {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background: var(--fondo);
+    height: 100vh;
+    width: 50%;
+    border-left: .1em dashed black;
+    padding: .5em;
+}
+
+/* Estilos de la lista del menu movil */
+.nav-list {
+    margin-top: 5em;
+    list-style: none;
+}
+
+.nav-list li:hover {
+    background: var(--hover);
+}
+
+.nav-list li a {
+    display: block;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: .03em;
+    padding: 1em;
+    transition: all .5s;
+}
+
+.nav-list li a:hover {
+    transform: translateY(-.2em);
+}
+
+/* Clases de los botones */
+.abrir-menu {
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+}
+
+.cerrar-menu {
+    float: right;
+    margin-top: .5em;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+}
+
+/* Clase del contenido */
+.section {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilos articulo de inicio */
+.art-inicio {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    border-bottom: .1em dashed black;
+}
+
+/* Clases del slideshow */
+.slide-cont {
+    position: relative;
+    width: 70%;
+    height: auto;
+    background: black;
+    padding: 1.5em;
+    box-shadow: 0 0 1em black;
+}
+
+/* Estilos de los slides */
+.slides {
+    display: none;
+    position: relative;
+    animation: fade 3s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.slides p {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    font-size: 2em;
+    letter-spacing: .05em;
+    background: var(--form);
+    text-align: center;
+    top: 10%;
+}
+
+.slides img {
+    position: relative;
+}
+
+/* Estilos de los botones */
+.btn-slide-izq {
+    position: absolute;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    background: var(--form);
+    left: 0;
+    bottom: 50%;
+}
+
+.btn-slide-izq:hover {
+    background: var(--hover);
+}
+
+.btn-slide-der {
+    position: absolute;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    background: var(--form);
+    right: 0;
+    bottom: 50%;
+}
+
+.btn-slide-der:hover {
+    background: var(--hover);
+}
+
+/* Clases de la lista de servicios */
+.serv-list {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2em;
+}
+
+.serv-list li {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 1em;
+}
+
+.serv-list li img {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.serv-list li p {
+    font-size: 1.2em;
+    letter-spacing: .02em;
+    margin-left: .2em;
+}
+
+/* Estilos articulo sobre mi */
+.art-sobre-mi {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    border-bottom: .1em dashed black;
+}
+
+/* Clases de la foto y lo que hago */
+.foto {
+    width: 50vw;
+    background: white;
+    box-shadow: 0 .5em 1em black;
+    margin-bottom: 2em;
+    padding: 1.2em;
+}
+
+.cita {
+    text-align: center;
+    padding: 1em;
+    font-size: 1em;
+    letter-spacing: .15em;
+    font-family: 'Permanent Marker', sans-serif;
+}
+
+.frase {
+    text-align: justify;
+    font-size: 1.2em;
+    letter-spacing: .02em;
+    margin: 0 2em 1em 2em;
+}
+
+/* Clase que contiene todas las skills */
+.skills {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1em;
+}
+
+/* Clase que contiene skills front y back */
+.skill-cont {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.skill-cont:first-child {
+    margin-bottom: 1.5em;
+}
+
+/* Clases de la lista de skills */
+.skill-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-list li {
+    list-style: none;
+    margin: 1.2em;
+}
+
+.skill-list li a {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-list li a img {
+    height: 2em;
+    width: 2em;
+    transition: all .5s;
+}
+
+.skill-list li a img:hover {
+    transform: rotate(180deg);
+}
+
+.skill-list li a p {
+    font-size: 1em;
+    padding: .2em;
+}
+
+.skill-list li a p:hover {
+    color: var(--hover);
+    text-shadow: .1em .1em .1em black;
+}
+
+/* Estilos articulo de proyectos */
+.art-proyectos {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    border-bottom: .1em dashed black;
+}
+
+/* Estilos proximamente proyectos */
+.proximo {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.proximo img {
+    z-index: -999;
+    height: 3em;
+    width: 3em;
+    animation: girar 3s linear infinite ;
+}
+
+@keyframes girar {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.proximo p {
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: .05em;
+    margin-left: .5em;
+}
+
+/* Estilos articulo de contacto */
+.art-contacto {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+/* Clases del formulario de contacto */
+.contact-form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-form label {
+    font-size: 1em;
+    letter-spacing: .05em;
+    font-weight: bold;
+    margin-bottom: .2em;
+}
+
+.contact-form input {
+    height: 1.5em;
+    width: 15em;
+    margin-bottom: 1em;
+    background: var(--form);
+    border: .1em dashed black;
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: .03em;
+}
+
+.contact-form textarea {
+    height: 5em;
+    width: 15em;
+    margin-bottom: 1em;
+    background: var(--form);
+    border: .1em dashed black;
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: .03em;
+    resize: vertical;
+}
+
+.contact-form input[type="submit"] {
+    align-self: center;
+    cursor: pointer;
+    background: gray;
+    border: .1em solid black;
+    height: 2em;
+    width: 4em;
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: .05em;
+}
+
+.contact-form input:focus {
+    outline: none;
+    border: .1em solid black;
+}
+
+.contact-form textarea:focus {
+    outline: none;
+    border: .1em solid black;
+}
+
+.contact-form input[type="submit"]:focus {
+    background: black;
+    color: white;
+}
+
+.contact-form input[type="submit"]:hover {
+    background: black;
+    color: white;
+}
+
+/* Clases de la lista de redes sociales */
+.red-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-list li {
+    list-style: none;
+    margin: 1.2em;
+}
+
+.red-list li a {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-list li a img {
+    height: 2em;
+    width: 2em;
+    transition: all .5s;
+}
+
+.red-list li a img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.red-list li a p {
+    font-size: 1em;
+    padding: .2em;
+}
+
+.red-list li a p:hover {
+    color: var(--hover);
+    text-shadow: .1em .1em .1em black;
+}
+
+/* Clase pie de pagina */
+.footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
+    width: 100%;
+    background: black;
+    color: white;
+    font-size: 1em;
+}
+
+/* Estilo mensaje de formulario */
+.mensaje {
+    display: none;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    background: var(--fondo);
+    border: .1em dashed black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 10em;
+    width: 20em;
+}
+
+.mensaje button {
+    height: 2em;
+    width: 3em;
+    cursor: pointer;
+    background: var(--fondo);
+    border: none;
+    font-size: 1em;
+    letter-spacing: .05em;
+    font-weight: bold;
+}
+
+.mensaje button:hover {
+    background: var(--hover);
+}
+
+.respuesta {
+    display: none;
+    font-size: 2em;
+    letter-spacing: .05em;
+}
+
+/* Responsive Web Design */
+@media screen and (min-width: 800px) {
+    :root {
+        font-size: 18px;
+    }
+
+    .art-inicio, .art-sobre-mi, .art-contacto, .art-proyectos {
+        padding-top: 7em;
+        padding-bottom: 7em;
+    }
+
+    /* Clase contenedor para centrar todo*/
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Botones de abrir y cerrar menu movil ocultos */
+    .abrir-menu, .cerrar-menu {
+        display: none;
+    }
+
+    /* Estilos del nav de pc */
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        position: unset;
+        height: auto;
+        width: auto;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    /* Clase de la lista del menu de pc */
+    .nav-list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+}
+
+/* Responsive en otros anchos de pantalla */
+@media screen and (min-width: 1000px) {
+    :root {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    :root {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    :root {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    :root {
+        font-size: 8px;
+    }
+}
