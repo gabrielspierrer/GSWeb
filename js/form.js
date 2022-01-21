@@ -30,6 +30,7 @@ enviar.addEventListener('click', (e) => {
         msj.style.display = 'flex';
         exito.style.display = 'block';
       } else {
+        msj.style.display = 'flex';
         error.style.display = 'block';
       }
     });
